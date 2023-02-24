@@ -1,0 +1,169 @@
+<Mbr2@MDTextField>:
+    font_size: '12sp'
+    multiline: False
+    #size_hint: None, None
+    #size: '200dp', '200dp'
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    #mode: 'rectangle'
+    hint_text: ''
+    #icon_left: 'account'
+    on_text_validate: False
+    id: mem
+    color_mode: 'primary'
+    on_text_validate:
+
+<MobileView>:
+
+
+<TabletView>:
+
+<DesktopView>:
+
+WindowManager:
+    id: WM
+    ScreenOne:
+        name: "ScreenOne"
+        MDBoxLayout:
+            orientation: 'vertical'
+            pos_hint: {'center_x': .5, 'center_y': .7}
+            size_hint: None, None
+            size: '500dp', '500dp'
+            padding: dp(10)
+            spacing: dp(10)
+            MDLabel:
+                text: 'From the Marshall Illinois \nSchools Foundation:'
+                #pos_hint: {'center_x': .85, 'center_y': .7}
+                pos: self.parent.pos
+                halign: 'center'
+            MDRectangleFlatButton:
+                text: 'Welcome!'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                on_release:
+                    app.root.current = "ScreenTwo"
+
+
+
+    ScreenTwo:
+        name: "ScreenTwo"
+        MDBoxLayout:
+            halign: 'center'
+            txt_fld: team_one, team_two
+            #adaptive_size: True
+            orientation: 'vertical'
+            spacing: dp(50)
+            #padding: 10
+            #size_hint_y: None
+            #height: 30
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            #size_hint: [.4, .8]
+            size_hint: None, None
+            size: '300dp', '300dp'
+            MDIcon:
+                icon: 'account'
+                adaptive_size: True
+
+            MDLabel:
+                adaptive_size: True
+                text: 'Score-Taking built for the best coach:'
+               # pos_hint: {'center_x': .5, 'center_y': .7}
+                pos: self.parent.pos
+                halign: 'center'
+                #md_bg_color: 'red'
+            BoxS1:
+                id: team_one
+                adaptive_size: True
+                multiline: False
+                size_hint: None, None
+                size: '290dp', '290dp'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                mode: 'fill'
+                hint_text: 'Team One'
+                on_text_validate: False
+            BoxS2:
+                adaptive_size: True
+                id: team_two
+                text:''
+                multiline: False
+                pos_hint: {'center_x': .5, 'center_y': .35}
+                size_hint: None, None
+                size: '290dp', '290dp'
+                mode: 'fill'
+                hint_text: 'Team Two'
+                on_text_validate:
+                    root.savetm()
+
+                    app.root.current = 'team_screen'
+            MDFlatButton:
+                text: 'Go Back!'
+                on_release:
+                    app.root.current = 'ScreenOne'
+
+    TeamScr:
+        id: scr
+        name: 'team_screen'
+        #padding: dp(40)
+        MDScrollView:
+            Layout1:
+                pos_hint: {'center_x': .4, 'center_y': .5}
+                #pos: dp(40), dp(40)
+                #size: '500dp', '400dp'
+                adaptive_height: True
+                max_height: dp(200)
+                #orientation: 'horizontal'
+                spacing: dp(25)
+                id: layout
+                cols: 2
+                col_default_width: dp(30)
+                padding: dp(100)
+
+                Mbr1:
+                    font_size: '12sp'
+                    multiline: False
+                    #size: '200dp', '200dp'
+                    #pos_hint: {'center_x': .5, 'center_y': .5}
+                    #mode: 'rectangle'
+                    #hint_text: 'Member One...'
+                    #icon_left: 'account'
+                    on_text_validate: False
+                    #adaptive_size: True
+                    width: dp(10)
+                    color_mode: 'primary'
+
+                MDTextField:
+                    font_size: '12sp'
+                    id: scnd
+                    multiline: False
+                    #size_hint: None, None
+                    size: '200dp', '200dp'
+                    #pos_hint: {'center_x': .5, 'center_y': .5}
+                    #mode: 'rectangle'
+                    hint_text: ''
+                    #icon_left: 'account'
+                    on_text_validate: False
+                    color_mode: 'primary'
+
+
+
+        MDFloatLayout:
+            MDBottomAppBar:
+                #title: 'Title'
+                #adaptive_size: True
+                #size: dp(400), dp(400)
+                halign: 'center'
+                MDTopAppBar:
+                    icon: 'git'
+                    #size: dp(400), dp(400)
+                    mode: 'free-end'
+                    title: 'Members'
+                    #adaptive_size: True
+                    left_action_items: [["plus", lambda x: layout.ad() ]]
+                    #left_action_items: [["plus", lambda x: layout.add_widget(scr.Widget()) ]]
+                    right_action_items: [["minus", lambda x: layout.rem()]]
+                    on_action_button: self.root.current = 'next'
+                MDBottomNavigation:
+                    title: 'hello world'
+                    MDFlatButton:
+                        text: 'hello'
+
+    MDScreen:
+        name: 'next'

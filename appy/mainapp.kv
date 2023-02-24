@@ -1,0 +1,193 @@
+<RL@MDLabel>:
+    halign: 'center'
+
+<Box@MDBoxLayout>:
+    halign: 'center'
+    orientation: 'vertical'
+    #md_bg_color: 'red'
+    adaptive_size: True
+    pos_hint: {'center_x': .5, 'center_y': .5}
+
+<Grid@MDGridLayout>:
+    rows: 2
+
+<SwipeToDeleteItem>
+    size_hint_y: None
+    height: content.height
+    anchor: 'left'
+    on_swipe_complete:
+    id: swip
+    name: 'swipe'
+
+    MDCardSwipeLayerBox:
+        padding: "8dp"
+
+
+        MDIconButton:
+            icon: "trash-can"
+            pos_hint: {"center_y": .5}
+            on_release:
+                root.parent.remove_item()
+                print(root)
+            color: 'black'
+
+    MDCardSwipeFrontBox:
+
+        OneLineListItem:
+            id: content
+            text: root.text
+            #swip_rect_width: 100
+            _no_ripple_effect: True
+            #remove_from_right: True
+            type_swipe: 'auto'
+            swipe_rectangle: self.x, self.y , self.width, self.height
+            swipe_timeout: 1000000
+            swipe_distance: 1
+
+
+<MobileView>
+    id: mb
+    Grid:
+        default_row_height: dp(500)
+        cols: 2
+        rows: 0
+        MDBottomAppBar:
+            MDTopAppBar:
+                type: 'top'
+                elevation:
+                left_action_items: [['account', lambda x: mb.hide_w()]]
+        MDCard:
+            id: card
+            md_bg_color: 'white'
+            #size_hint: .5, .5
+            size_hint: 1, .5
+            on_release: self.remove_widget(self)
+            MDScrollView:
+                #relative: True
+                do_scroll_y: False
+                do_scroll_x: False
+                #scrollable_height: self.viewport_size[1]
+
+                Grid:
+                    id: float
+                    size_hint: .5, .5
+                    spacing: dp(5)
+                    padding: dp(1)
+                    #size: dp(40), dp(40)
+                    #adaptive_height: True
+                    #default_row_height: dp(5)
+                    rows: 2
+
+                    #RL:
+                    #    pos_hint: {'center_y': .8, 'center_x': .2}
+                    #    text: 'Hello'
+                    #    color: 'black'
+                    #    #md_bg_color: 'grey'
+
+                    Grid:
+                        id: gd
+                        spacing: dp(10)
+                        padding: dp(0)
+                        size: dp(40), dp(400)
+                        default_row_size: dp(20)
+                        size_hint_y: None
+                        rows: 2
+                        cols: 0
+                        default_row_height: dp(5)
+                        Grid:
+                            id: gd2
+                            adaptive_height: True
+                            size_hint_y: None
+                            #padding: dp(5)
+                            rows: 0
+                            cols: 2
+                            default_col_width:
+                            MDIconButton:
+                                icon: 'minus'
+                                md_bg_color: 'grey'
+                                pos_hint: {'center_x': .5, 'center_y': .9}
+                                anchor_y: 'bottom'
+                                on_release: list.remove_item()
+                            MDIconButton:
+                                icon: 'plus'
+                                md_bg_color: 'grey'
+                                #pos_hint: {'center_x': .5, 'center_y': .2}
+                                anchor_y: 'bottom'
+                                on_release:
+                                    root.AddLis()
+                        MDScrollView:
+                            name: 'scroll'
+                            do_scroll_y: True
+                            do_scroll_x: False
+                            size_hint_y: 1
+                            List:
+                                id: list
+                                size_hint_x: 10
+                                size_hint_y: None
+                                #pos_hint: {'center_y': .2, 'center_x': .5}
+                                #size_hint_y: 1
+                                padding: 0
+
+                    #MDAnchorLayout:
+                    #        #anchor_y: 'bottom'
+                    #    Grid:
+                    #        rows: 0
+                    #        cols: 3
+                    #        MDIconButton:
+                    #            icon: 'plus'
+                    #            md_bg_color: 'grey'
+                    #            #pos_hint: {'center_x': .5, 'center_y': .2}
+                    #            anchor_y: 'bottom'
+                    #            on_release:
+                    #                root.AddLis()
+                    #        MDLabel:
+                    #            text: ''
+                    #        MDIconButton:
+                    #            icon: 'minus'
+                    #            md_bg_color: 'grey'
+                    #            #pos_hint: {'center_x': .8, 'center_y': .2}
+                    #            anchor_y: 'bottom'
+                    #            on_release:
+                    #                print(root.ids.scroll.children)
+                    #                print()
+                    #                #app.List2.list.remove_item()
+                    #                #root.event()
+                    #                #root.ids.remove_widget(root.ids.list.children[1])
+
+
+                        #MDFlatButton:
+                        #    pos_hint: {'center_x': .5, 'center_y': .2}
+                        #    size_hint: None, None
+                        #    text: 'text'
+                        #    md_bg_color: 'red'
+                        #    size_y: dp(400)
+
+        RL:
+            text: "Mobile"
+            size_hint_y: dp(5)
+
+
+
+<TabletView>
+    RL:
+        text: "Tablet"
+<DesktopView>
+    RL:
+        text: "Desktop"
+
+<WM>:
+
+    Intro:
+        Box:
+            spacing: dp(40)
+            MDLabel:
+                halign: 'center'
+                text: 'Hello World'
+            B1:
+                on_release:
+                    root.current = 'ResponsiveView'
+
+    ResponsiveView:
+        B1:
+            text: 'jello'
+

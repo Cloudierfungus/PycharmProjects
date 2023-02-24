@@ -1,0 +1,47 @@
+WindowManager:
+    ScreenOne:
+    ScreenTwo:
+
+<ScreenOne>:
+    name: 'main'
+
+    MDFloatLayout:
+        MDFlatButton:
+            id: intro_label
+            halign: 'center'
+            markup: True
+            text: "Hello"
+            md_bg_color: 'grey'
+            text_color: 'white'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            on_release: app.root.current = "second"
+
+    MDWidget:
+        pos_hint: {'center_x': .5, 'center_y': .5}
+
+        MDCard:
+            #pos: '200dp', '200dp'
+            halign: 'center'
+            md_bg_color: 'grey'
+            theme_text_color: 'Custom'
+
+            MDLabel:
+                text: 'Welcome'
+                theme_text_color: 'Custom'
+                text_color: 'white'
+                halign: 'center'
+
+
+
+<ScreenTwo>:
+    name: 'second'
+
+    MDFloatLayout:
+        MDFlatButton:
+            id: outro_label
+            halign: 'center'
+            markup: True
+            text: "GoodBye"
+            pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+            on_release: app.root.current = "main"
+
