@@ -12,6 +12,7 @@ from kivymd.uix.gridlayout import MDGridLayout
 from kivymd.uix.toolbar import MDBottomAppBar
 from kivy.event import EventDispatcher
 from kivymd.uix.responsivelayout import MDResponsiveLayout
+from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.widget import MDWidget
 store = JsonStore('stow.json')
 
@@ -25,6 +26,9 @@ class MainApp(MDApp):
         self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Red"
         self.theme_cls.primary_hue = "A400"
+        pass
+
+    class OvrFlow(MDDropdownMenu):
         pass
 
 
@@ -92,11 +96,38 @@ class TeamScr(MDScreen):
         pass
 
     class Widget(MDWidget, Member):
+        pass
+       # def stow(self):
+       #     if store.exists(self.text):
+       #         print(self.text + ' exists!')
+       #     else:
+       #         store.put(self.text)
+
+
+
+
+
+
+
+
+
         def rem(self):
             self.remove_widget(self)
         pass
 
     class Layout1(MDGridLayout):
+        def stow(self, widget):
+            count = 0
+            stowput = JsonStore('members.json')
+            for child in self.children:
+                count += 1
+                if isinstance(child, MDTextField):
+                    if stowput.exists('Member' + str(count)):
+                        stowput.delete('Member' + str(count))
+                        stowput.put('Member' + str(count), member=str(child.text), id=count)
+                    else:
+                        stowput.put('Member' + str(count), member=str(child.text), id=count)
+
         def ad(self):
             ab = 0
             for child in self.children[:]:
@@ -106,6 +137,7 @@ class TeamScr(MDScreen):
             elif ab < 15:
                 mbr = TeamScr.Mbr2
                 return self.add_widget(TeamScr.Widget())
+
 
         def rem(self):
             count = 0
