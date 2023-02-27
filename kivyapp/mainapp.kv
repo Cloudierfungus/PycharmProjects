@@ -5,10 +5,11 @@
     #size: '200dp', '200dp'
     pos_hint: {'center_x': .5, 'center_y': .5}
     mode: 'fill'
-    fill_color_focus: 1,50,50,10
-    color_active: 1,1,1,1
+    #fill_color: [50,50,10]
+    #color_active: 1,50,255,50
     hint_text: ''
     #icon_left: 'account'
+    normal_color: [0, 50, 50]
     on_text_validate: False
     id: mem
     color_mode: 'primary'
@@ -123,13 +124,14 @@ WindowManager:
                     multiline: False
                     #size: '200dp', '200dp'
                     #pos_hint: {'center_x': .5, 'center_y': .5}
-                    #mode: 'rectangle'
+                    mode: 'fill'
                     #hint_text: 'Member One...'
                     #icon_left: 'account'
                     on_text_validate: False
                     #adaptive_size: True
                     width: dp(10)
                     color_mode: 'primary'
+
 
                 MDTextField:
                     font_size: '12sp'
@@ -138,7 +140,7 @@ WindowManager:
                     #size_hint: None, None
                     size: '200dp', '200dp'
                     #pos_hint: {'center_x': .5, 'center_y': .5}
-                    #mode: 'rectangle'
+                    mode: 'fill'
                     hint_text: ''
                     #icon_left: 'account'
                     on_text_validate: False
@@ -159,15 +161,11 @@ WindowManager:
                     mode: 'free-end'
                     title: 'Members'
                     #adaptive_size: True
-                    overflow_cls: app.OvrFlow()
+                    #overflow_cls: app.OvrFlow()
                     left_action_items: [["plus", lambda x: layout.ad() ]]
                     #left_action_items: [["plus", lambda x: layout.add_widget(scr.Widget()) ]]
                     right_action_items: [["minus", lambda x: layout.rem()], ['menu', lambda x: print(layout.children)]]
 
-                MDBottomNavigation:
-                    title: 'hello world'
-                    #MDFlatButton:
-                        #text: 'hello'
 
     MDScreen:
         name: 'next'

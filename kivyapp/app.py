@@ -23,7 +23,7 @@ class MainApp(MDApp):
     save = StringProperty()
 
     def build(self):
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "Red"
         self.theme_cls.primary_hue = "A400"
         pass
@@ -103,14 +103,6 @@ class TeamScr(MDScreen):
        #     else:
        #         store.put(self.text)
 
-
-
-
-
-
-
-
-
         def rem(self):
             self.remove_widget(self)
         pass
@@ -138,7 +130,6 @@ class TeamScr(MDScreen):
                 mbr = TeamScr.Mbr2
                 return self.add_widget(TeamScr.Widget())
 
-
         def rem(self):
             count = 0
             for child in self.children[:]:
@@ -156,5 +147,3 @@ class TeamScr(MDScreen):
 
 if __name__ == '__main__':
     MainApp().run()
-
-
