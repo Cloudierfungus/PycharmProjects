@@ -4,3 +4,7 @@ Configure point amount (settings)
 Possibly Subcategories
 No Answer (Button)
 Question Recorder
+Current Players/captain selection
+Pie Chart of Team strengths
+Quiz Section for players
+
