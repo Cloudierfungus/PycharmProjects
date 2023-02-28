@@ -1,0 +1,6 @@
+Timing funtion (Button)
+Categories; Category highlights (Label/Button)
+Configure point amount (settings)
+Possibly Subcategories
+No Answer (Button)
+Question Recorder
